@@ -130,7 +130,12 @@ http.createServer(function(req, res) {
 	});
 	req.on('end', function () {
 		request(options, function(err, response, body) {
-			res.setHeader('content-type', response.headers['content-type']);
+      var headerName;
+
+      for (headerName in response.headers) {
+        res.setHeader(headerName, response.headers[headerName]);
+      }
+
 			res.end(body);
 		});
 	});
