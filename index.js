@@ -132,7 +132,7 @@ http.createServer(function(req, res) {
 		request(options, function(err, response, body) {
       var headerName;
 
-      for (var headerName in response.headers) {
+      for (headerName in response.headers) {
         res.setHeader(headerName, response.headers[headerName]);
       }
 
